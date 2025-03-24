@@ -115,7 +115,7 @@ pub extern "C" fn expt_new_client(
     // println!("Creating cac client thread for tenant {tenant}");
     EXP_RUNTIME.block_on(async move {
         match CLIENT_FACTORY
-            .create_client(tenant.clone(), update_frequency, hostname)
+            .create_client(tenant.clone(), update_frequency.into(), hostname)
             .await
         {
             Ok(_) => 0,
